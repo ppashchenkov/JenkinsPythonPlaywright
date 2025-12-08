@@ -21,7 +21,7 @@ def get_cookie(playwright: Playwright):
         base_url=BASE_URL
     )
     page = context.new_page()
-
+    print(f"BASE_URL={BASE_URL}")
     name_loc = "input[id='j_username']"
     password_loc = "input[id='j_password']"
     submit_btn_loc = "button[name='Submit']"
