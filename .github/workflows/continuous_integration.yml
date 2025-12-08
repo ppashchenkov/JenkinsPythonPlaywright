@@ -71,4 +71,4 @@ jobs:
         run: ./.github/wait-for-jenkins.sh
 
       - name: pytest run all tests
-        run: pytest
+        run: pytest -v
