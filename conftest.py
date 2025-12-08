@@ -7,12 +7,12 @@ load_dotenv()
 
 USER_NAME = os.getenv("JENKINS_USERNAME")
 USER_PASSWORD = os.getenv("JENKINS_PASSWORD")
-HOST = os.getenv("HOST")
-PORT = os.getenv("PORT")
+JENKINS_HOST = os.getenv("JENKINS_HOST")
+JENKINS_PORT = os.getenv("JENKINS_PORT")
 HEADLESS_MODE = os.getenv("HEADLESS_MODE", "false").lower() == "true"
 
 
-BASE_URL = f"http://{HOST}:{PORT}"
+BASE_URL = f"http://{JENKINS_HOST}:{JENKINS_PORT}"
 
 @pytest.fixture(scope="session")
 def get_cookie(playwright: Playwright):
