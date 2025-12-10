@@ -42,4 +42,3 @@ def test_environment_tooltips(freestyle, tp_link, tippy, tp_expected_text) :
     tp_text = freestyle.locator(f'div#{tippy}')
 
     expect(tp_text).to_have_text(tp_expected_text)
-
