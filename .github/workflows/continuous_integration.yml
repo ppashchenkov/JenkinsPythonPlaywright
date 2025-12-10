@@ -69,6 +69,9 @@ jobs:
           echo "Playwright cache directory: $(playwright --version)"
           ls -la $HOME/.cache/ms-playwright/ || echo "Playwright cache directory does not exist"
 
+      - name: Ensure Playwright Cache Directory Exists
+        run: mkdir -p $HOME/.cache/ms-playwright/
+
       - name: Install Playwright Browsers
         if: steps.cache-playwright-browsers.outputs.cache-hit != 'true'
         run: python -m playwright install --with-deps
