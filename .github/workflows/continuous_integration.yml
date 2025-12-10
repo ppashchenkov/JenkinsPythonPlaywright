@@ -17,8 +17,6 @@ jobs:
       JENKINS_HOST: localhost
       JENKINS_PORT: 8080
       HEADLESS_MODE: true
-      BROWSER_NAME: chrome
-      BROWSER_OPTIONS_CHROME: --remote-allow-origins=*;--disable-gpu;--no-sandbox;--disable-dev-shm-usage;--headless=new;--window-size=1920,1080
 
     steps:
       - name: git clone
@@ -55,12 +53,12 @@ jobs:
 
       - name: prepare jenkins data
         run: |
-          cat ${{ github.workspace }}/jenkins_data/jenkins_backup0* > ${{ github.workspace }}/jenkins_backup.tar
-          md5sum ${{ github.workspace }}/jenkins_backup.tar
+          cat ${{ github.workspace }}/jenkins_data/jenkins_backup0* > ${{ github.workspace }}/jenkins_backup.tar.gz
+          md5sum ${{ github.workspace }}/jenkins_backup.tar.gz
 
       - name: extract jenkins data and set permission
         run: |
-          tar -xvf ./jenkins_backup.tar
+          tar -xzvf ./jenkins_backup.tar.gz
           chmod -R 777 ./jenkins_backup/var/jenkins_home
           chmod -R 777 ./.github/
 
