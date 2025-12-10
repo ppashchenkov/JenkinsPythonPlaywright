@@ -63,7 +63,7 @@ jobs:
           key: ${{ runner.os }}-playwright-browsers-${{ env.PLAYWRIGHT_VERSION }}
           restore-keys: |
             ${{ runner.os }}-playwright-browsers-${{ env.PLAYWRIGHT_VERSION }}
-            playwright-browsers-${{ env.PLAYWRIGHT_VERSION }}
+            ${{ runner.os }}-playwright-browsers-
 
       - name: Debug Playwright cache location
         run: |
