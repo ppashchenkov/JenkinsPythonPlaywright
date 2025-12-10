@@ -36,6 +36,7 @@ jobs:
           path: $HOME/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
           restore-keys: |
+            ${{ runner.os }}-pip-${{ github.base_ref }}-${{ hashFiles('**/requirements.txt') }}
             ${{ runner.os }}-pip-
 
       - name: Debug pip cache location
