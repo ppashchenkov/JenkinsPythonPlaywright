@@ -17,6 +17,7 @@ jobs:
       JENKINS_HOST: localhost
       JENKINS_PORT: 8080
       HEADLESS_MODE: true
+      PLAYWRIGHT_BROWSERS_PATH: ~/.cache/ms-playwright/
 
     steps:
       - name: git clone
@@ -36,7 +37,7 @@ jobs:
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
-      
+
       - name: Debug pip cache location
         run: pip cache dir
 
@@ -62,7 +63,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-playwright-browsers-${{ env.PLAYWRIGHT_VERSION }}
             playwright-browsers-${{ env.PLAYWRIGHT_VERSION }}
-      
+
       - name: Debug Playwright cache location
         run: |
           echo "Playwright cache directory: $(playwright --version)"
@@ -71,6 +72,9 @@ jobs:
       - name: Install Playwright Browsers
         if: steps.cache-playwright-browsers.outputs.cache-hit != 'true'
         run: python -m playwright install --with-deps
+
+      - name: Debug Playwright cache location (After install)
+        run: ls -la ~/.cache/ms-playwright/
 
       - name: prepare jenkins data
         run: |
