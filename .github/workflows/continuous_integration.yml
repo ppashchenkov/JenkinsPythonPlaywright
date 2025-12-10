@@ -73,9 +73,9 @@ jobs:
       - name: Ensure Playwright Cache Directory Exists
         run: mkdir -p $HOME/.cache/ms-playwright/
 
-      - name: Install Playwright Browsers (VERBOSE)
+      - name: Install Playwright Browsers
         if: steps.cache-playwright-browsers.outputs.cache-hit != 'true'
-        run: python -m playwright install --with-deps --verbose
+        run: python -m playwright install --with-deps
 
       - name: Debug Playwright cache location (After install)
         run: |
