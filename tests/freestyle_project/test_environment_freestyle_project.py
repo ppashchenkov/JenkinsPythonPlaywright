@@ -43,4 +43,3 @@ def test_environment_tooltips(freestyle, tp_link, tippy, tp_expected_text) :
 
     expect(tp_text).to_have_text(tp_expected_text)
 
-
