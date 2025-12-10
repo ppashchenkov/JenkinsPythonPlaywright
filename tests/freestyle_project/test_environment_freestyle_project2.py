@@ -20,4 +20,3 @@ def test_checkboxes_can_be_selected(freestyle):
         checkboxes.nth(i).locator(checkbox_loc).click()
 
         expect(checkboxes.nth(i).locator(checkbox_check_loc)).to_be_checked()
-
