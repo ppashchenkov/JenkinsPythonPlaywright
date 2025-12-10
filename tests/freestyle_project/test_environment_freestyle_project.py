@@ -28,6 +28,7 @@ def test_checkboxes_can_be_selected(freestyle):
 
         checkboxes.nth(i).locator(checkbox_loc).click()
 
+
         expect(checkboxes.nth(i).locator(checkbox_check_loc)).not_to_be_checked()
 
 @pytest.mark.parametrize('tp_link, tippy, tp_expected_text', Freestyle.tooltip_environment)
